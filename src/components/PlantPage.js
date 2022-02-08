@@ -8,6 +8,7 @@ function PlantPage() {
   const [addPlant, setAddPlant] = useState("")
   const [addImage, setAddimage] = useState("")
   const [addPrice, setAddPrice] = useState(0)
+  const [search, setSearch] = useState("")
 
   function handleNameChange(e){
     setAddPlant(e.target.value)
@@ -20,6 +21,17 @@ function PlantPage() {
   function handlePriceChange(e) {
     setAddPrice(e.target.value)
   }
+
+  function handleSearch(e){
+    setSearch(e.target.value)
+  }
+
+  const filterList = plants.filter( plant => {
+    if (search === "") return plant
+    else if ((plant.name).toLowerCase().includes(search.toLowerCase())){
+      return plant
+    }
+  })
 
   function submitForm() {
   
@@ -49,8 +61,8 @@ function PlantPage() {
   return (
     <main>
       <NewPlantForm handleNameChange={handleNameChange} handleImageChange={handleImageChange} handlePriceChange={handlePriceChange} submitForm={submitForm}/>
-      <Search />
-      <PlantList plants={plants} />
+      <Search handleSearch={handleSearch}/>
+      <PlantList plants={filterList} />
     </main>
   );
 }
