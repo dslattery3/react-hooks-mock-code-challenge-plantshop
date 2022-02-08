@@ -1,14 +1,10 @@
 import React from "react";
 
-
-
 function Search({handleSearch}) {
-
 
   function handleChange(e) {
     handleSearch(e)
   }
-
 
   return (
     <div className="searchbar">

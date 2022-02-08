@@ -34,28 +34,30 @@ function PlantPage() {
   })
 
   function submitForm() {
-  
+
+      const newPlant = {
+      name : addPlant,
+      image : addImage,
+      price : addPrice
+    }
+
+    setPlants([...plants, newPlant])
+
       fetch("http://localhost:6001/plants", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          "name" : "addPlant",
-          "image" : "addImage",
-          "price" : addPrice
-        })
+        body: JSON.stringify(newPlant)
       })
       .then(r=>r.json())
       .then(data => console.log(data))
-
   }
 
   useEffect(() => {
     fetch('http://localhost:6001/plants')
       .then(r=>r.json())
       .then(data => setPlants(data))
-
   }, [])
 
   return (

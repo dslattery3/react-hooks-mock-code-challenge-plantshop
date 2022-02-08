@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 
 function NewPlantForm({handleNameChange, handleImageChange, handlePriceChange, submitForm}) {
 
 function handleName(e){
   handleNameChange(e)
-
 }
 
 function handleImage(e){
@@ -15,11 +14,12 @@ function handlePrice(e){
   handlePriceChange(e)
 }
 
-function handleSub() {
-  submitForm()
+function handleSub(e) {
+  e.preventDefault()
+  submitForm(e)
+  e.target.reset()
 }
  
-
   return (
     <div className="new-plant-form">
       <h2>New Plant</h2>
