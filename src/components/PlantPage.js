@@ -34,7 +34,6 @@ function PlantPage() {
   })
 
   function submitForm() {
-  
       fetch("http://localhost:6001/plants", {
         method: "POST",
         headers: {
@@ -48,14 +47,12 @@ function PlantPage() {
       })
       .then(r=>r.json())
       .then(data => console.log(data))
-
   }
 
   useEffect(() => {
     fetch('http://localhost:6001/plants')
       .then(r=>r.json())
       .then(data => setPlants(data))
-
   }, [])
 
   return (
