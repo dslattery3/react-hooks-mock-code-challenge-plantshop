@@ -14,7 +14,8 @@ function handlePrice(e){
   handlePriceChange(e)
 }
 
-function handleSub() {
+function handleSub(e) {
+  e.preventDefault()
   submitForm()
 }
  

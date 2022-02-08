@@ -34,19 +34,12 @@ function PlantPage() {
   })
 
   function submitForm() {
-      fetch("http://localhost:6001/plants", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          "name" : "addPlant",
-          "image" : "addImage",
-          "price" : addPrice
-        })
-      })
-      .then(r=>r.json())
-      .then(data => console.log(data))
+    const newPlant = {
+      name: addPlant,
+      image: addImage,
+      price: addPrice
+    }
+    setPlants([...plants, newPlant ])
   }
 
   useEffect(() => {
